@@ -458,4 +458,5 @@ const colorList = [
   'fuchsia',
   'pink',
   'rose',
+  'one',
 ] as const;
