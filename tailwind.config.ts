@@ -18,6 +18,10 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        clashDisplay: ['var(--font-clashDisplay)', "sans-serif"],
+        poppins: ['var(--font-poppins)', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

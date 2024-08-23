@@ -1,11 +1,15 @@
-// components/Navbar.tsx
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
 import { ModeToggle } from '@/components/toggle';
 import { Button } from '@/components/ui/button';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,9 +23,9 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <div className='bg border-b-2 dark:bg-secondary-foreground'>
-      <nav className='relative mx-auto flex max-w-7xl items-center justify-between bg-white px-4 py-4 dark:bg-secondary-foreground'>
-        <Link className='flex gap-2 text-3xl font-bold leading-none ' href='#'>
+    <div className='sticky top-0 z-50 bg-white dark:bg-secondary-foreground lg:bg-white/30 lg:backdrop-blur-lg lg:dark:bg-secondary-foreground/30'>
+      <nav className='relative mx-auto flex max-w-7xl items-center justify-between px-4 py-4'>
+        <Link className='flex gap-2 text-3xl font-bold leading-none' href='#'>
           <Image
             src='/images/logo/logo-1.svg'
             alt='Logo'
@@ -31,6 +35,15 @@ const Navbar: React.FC = () => {
           <h3 className='text-3xl font-bold text-secondary dark:text-white'>
             Naza
           </h3>
+
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger className='text-sm'>v3.1</TooltipTrigger>
+              <TooltipContent className='text-sm'>
+                <p className='text-sm font-normal'>version 3.1</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </Link>
         <div className='lg:hidden'>
           <button
@@ -47,7 +60,7 @@ const Navbar: React.FC = () => {
             </svg>
           </button>
         </div>
-        <ul className='absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 transform lg:mx-auto lg:flex  lg:w-auto lg:items-center lg:space-x-6'>
+        <ul className='absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 transform lg:mx-auto lg:flex lg:w-auto lg:items-center lg:space-x-6'>
           <li>
             <a
               className='text-sm font-semibold text-secondary hover:text-primary dark:text-white dark:hover:text-primary       '
@@ -152,11 +165,10 @@ const Navbar: React.FC = () => {
               Contact
             </a>
           </li>
+          {/* Other menu items remain unchanged */}
         </ul>
 
-        {/* <a className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200" href="#">Sign In</a>
-        <a className="hidden lg:inline-block py-2 px-6 bg-primary hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" href="#">Sign up</a> */}
-        <div className='hidden gap-4  lg:flex'>
+        <div className='hidden gap-4 lg:flex'>
           <ModeToggle />
           <Button
             asChild
@@ -167,7 +179,9 @@ const Navbar: React.FC = () => {
         </div>
       </nav>
       <div
-        className={`navbar-menu relative z-50 ${isMenuOpen ? '' : 'hidden'}`}
+        className={`navbar-menu relative z-50 lg:hidden ${
+          isMenuOpen ? '' : 'hidden'
+        }`}
       >
         <div
           className='navbar-backdrop fixed inset-0 bg-gray-800 opacity-25'
@@ -257,7 +271,7 @@ const Navbar: React.FC = () => {
             <div className='pt-6'>
               <Button
                 asChild
-                className='flex rounded-full bg-primary  transition duration-200 dark:bg-primary dark:text-secondary-foreground'
+                className='flex rounded-full bg-primary transition duration-200 hover:bg-primary-foreground dark:bg-primary dark:text-secondary-foreground'
               >
                 <Link href='/login'>Contact Me</Link>
               </Button>

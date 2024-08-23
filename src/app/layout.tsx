@@ -1,9 +1,12 @@
+import { Poppins } from '@next/font/google';
+import localFont from '@next/font/local';
 import { Metadata } from 'next';
 import * as React from 'react';
 
 import '@/styles/globals.css';
 
-import { ThemeProvider } from '@/app/components/theme-provider';
+import { ThemeProvider } from '@/components/theme-provider';
+
 // !STARTERCONF This is for demo purposes, remove @/styles/colors.css import immediately
 import { siteConfig } from '@/constant/config';
 
@@ -49,21 +52,51 @@ export const metadata: Metadata = {
   // ],
 };
 
+const clashDisplay = localFont({
+  src: [
+    {
+      path: '../../public/fonts/clash-display/ClashDisplay-Extralight.ttf',
+      weight: '200',
+    },
+    {
+      path: '../../public/fonts/clash-display/ClashDisplay-Regular.ttf',
+      weight: '400',
+    },
+    {
+      path: '../../public/fonts/clash-display/ClashDisplay-Medium.ttf',
+      weight: '500',
+    },
+    {
+      path: '../../public/fonts/clash-display/ClashDisplay-Semibold.ttf',
+      weight: '600',
+    },
+    {
+      path: '../../public/fonts/clash-display/ClashDisplay-Bold.ttf',
+      weight: '700',
+    },
+  ],
+  variable: '--font-clashDisplay',
+});
+
+const poppins = Poppins({
+  weight: ['400', '500', '600', '700'],
+  subsets: ['latin'],
+  variable: '--font-poppins',
+});
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html>
+    <html
+      className={`${clashDisplay.variable} ${poppins.variable} font-poppins`}
+    >
       <body>
-      <ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-            
-          >
-            {children}
-          </ThemeProvider>
+        <ThemeProvider attribute='class' defaultTheme='light'>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

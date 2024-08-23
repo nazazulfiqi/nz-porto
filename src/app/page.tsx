@@ -5,7 +5,7 @@ import '@/lib/env';
 
 import Navbar from '@/components/navbar';
 
-
+import HeroModule from '@/modules/landing/hero/module';
 
 /**
  * SVGR Support
@@ -22,10 +22,10 @@ import Navbar from '@/components/navbar';
 export default function HomePage() {
   return (
     <main>
-      <section className='bg-white'>
-       <Navbar/>
-        <div className='layout relative flex min-h-screen flex-col items-center justify-center py-12 text-center'>
-       <h1 className='mt-8 text-4xl md:text-6xl text-primary dark:text-primary'>TEST</h1>
+      <section className='bg-white dark:bg-secondary-foreground'>
+        <Navbar />
+        <div className='mx-auto min-h-screen '>
+          <HeroModule />
         </div>
       </section>
     </main>
