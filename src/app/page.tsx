@@ -5,7 +5,9 @@ import '@/lib/env';
 
 import Navbar from '@/components/navbar';
 
+import AboutModule from '@/modules/landing/about/module';
 import HeroModule from '@/modules/landing/hero/module';
+import ServiceModule from '@/modules/landing/services/module';
 
 /**
  * SVGR Support
@@ -24,8 +26,10 @@ export default function HomePage() {
     <main>
       <section className='bg-white dark:bg-secondary-foreground'>
         <Navbar />
-        <div className='mx-auto min-h-screen '>
+        <div className='mx-auto min-h-screen'>
           <HeroModule />
+          <ServiceModule />
+          <AboutModule />
         </div>
       </section>
     </main>

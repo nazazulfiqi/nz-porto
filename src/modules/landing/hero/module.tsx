@@ -1,8 +1,12 @@
 import Image from 'next/image';
 import React from 'react';
+import Marquee from 'react-fast-marquee';
 import { FaCircleArrowRight } from 'react-icons/fa6';
+import { PiStarFourFill } from 'react-icons/pi';
 
 import { Button } from '@/components/ui/button';
+
+import { skills } from '@/constant/skills';
 
 const HeroModule = () => {
   return (
@@ -41,7 +45,19 @@ const HeroModule = () => {
         </div>
       </div>
 
-      <div className='z-10  h-16 w-full border-t-2 border-primary-foreground bg-primary'></div>
+      <div className='bg-tertiary z-10 flex h-16 w-full items-center justify-center'>
+        <Marquee autoFill>
+          {skills.map((skill) => (
+            <div
+              key={skill}
+              className='mx-2 flex items-center gap-4 font-clashDisplay text-2xl font-medium tracking-wider text-white'
+            >
+              <PiStarFourFill />
+              {skill}
+            </div>
+          ))}
+        </Marquee>
+      </div>
     </main>
   );
 };

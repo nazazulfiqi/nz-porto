@@ -15,6 +15,8 @@
     --hover: 155 100 37;
     --secondary: 222 47 11;
     --secondary-foreground: 236, 88%, 7%;
+    --tertiary: 27 91% 54%;
+
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
     --accent: 210 40% 96.1%;
@@ -30,7 +32,7 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-  } 
+  }
 
   .dark {
     --background: 222.2 84% 4.9%;
@@ -44,6 +46,7 @@
     --hover: 155 100 37;
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 236, 88%, 7%;
+    --tertiary: 27 91% 54%;
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
     --accent: 217.2 32.6% 17.5%;
@@ -59,6 +62,10 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+}
+
+.rounded-semi {
+  border-radius: 200px;
 }
 
 @layer base {
